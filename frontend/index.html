@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Analyzer</h1>
+
+        <!-- Sorting strategy -->
+
+        <!-- Individual task input -->
+        <form id="task-form">
+            <h2>Add Individual Task</h2>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="title" required>
+            </div>
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" id="due_date" required>
+            </div>
+            <div class="form-group">
+                <label>Estimated Hours</label>
+                <input type="number" id="estimated_hours" min="0" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Importance (1-10)</label>
+                <input type="number" id="importance" min="1" max="10" required>
+            </div>
+            <div class="form-group">
+                <label>Dependencies (IDs comma-separated)</label>
+                <input type="text" id="dependencies">
+            </div>
+            <button type="submit" class="btn">Add Task</button>
+        </form>
+
+        <!-- Bulk task input -->
+        <div class="bulk-section">
+            <h2>Bulk JSON Input</h2>
+            <textarea id="bulk-tasks" placeholder='Paste JSON array here'></textarea>
+            <button id="add-bulk" class="btn">Add Bulk Tasks</button>
+        </div>
+
+                <div class="form-group">
+            <label for="sort-strategy">Sorting Strategy:</label>
+            <select id="sort-strategy">
+                <option value="smart">Smart Balance</option>
+                <option value="fastest">Fastest Wins</option>
+                <option value="high-impact">High Impact</option>
+                <option value="deadline">Deadline Driven</option>
+            </select>
+        </div>
+
+
+        <!-- Analyze tasks -->
+        <div class="analyze-section">
+            <button id="analyze-tasks" class="btn analyze-btn">Analyze Tasks</button>
+            <p id="feedback" class="feedback"></p>
+        </div>
+
+        <!-- Display all tasks -->
+        <div class="tasks-section">
+            <h2>All Tasks</h2>
+            <div id="task-list" class="tasks-list"></div>
+        </div>
+
+        <!-- Display top 3 suggestions -->
+        <div class="tasks-section">
+            <h2>Top 3 Suggestions</h2>
+            <div id="top3-list" class="tasks-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
